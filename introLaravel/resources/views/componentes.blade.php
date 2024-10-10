@@ -8,5 +8,7 @@
 </x-Card>
 <x-Card encabezado="Componente 2" titulo="Dinamico 2" textoBoton="NO Guardar">
     Soy el contenido del segundo
-</x-Card>
+</x-Card> 
+<x-Alert tipo="danger"> Rojo </x-Alert>
+<x-Alert tipo="warning"> Amarillo </x-Alert>
 @endsection 
