@@ -24,4 +24,6 @@ Route::get('/form', function () {
         // rutas para controlador
         Route::get('/', [ControladorVistas::class, 'home'])->name('rutaInicio');
         Route::get('/formulario', [ControladorVistas::class, 'formulario'])->name('rutaForm');
-        Route::get('/consulta', [ControladorVistas::class, 'consulta'])->name('rutaClientes');
+        Route::get('/consulta', [ControladorVistas::class, 'consulta'])->name('rutaClientes'); 
+
+        Route::post('/enviarCliente', [ControladorVistas::class, 'procesarCliente'])->name('rutaEnviar');
