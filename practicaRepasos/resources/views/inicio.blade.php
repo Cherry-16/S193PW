@@ -11,7 +11,6 @@
     <div class="d-flex flex-column justify-content-center align-items-center text-center vh-100">
         <h1 class="display-1">Universidad Politécnica de Querétaro</h1>
         <img src="https://api.encuentraescuela.com.mx/storage/app/logos/1575402099_9561LOGO_UPQ-01.png" width="20%">
-        <br>
         <p>
             Nombre de la Alumna: Vanessa Sthephania Martínez Macías <br>
             Nombre del Profesor: Ivan Isay Guerra Lopez <br>
