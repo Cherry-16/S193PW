@@ -3,4 +3,5 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControladorVista;
 
-Route::get('/registro', [ControladorVista::class, 'registrar'])->name('rutaregistro');
+Route::get('/', [ControladorVista::class, 'registrar'])->name('rutaregistro');
+Route::post('/registro', [ControladorVista::class, 'procesarPrenda'])->name('guardarPrenda');
