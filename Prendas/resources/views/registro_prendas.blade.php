@@ -10,7 +10,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-    <div class="card mb-4">
+    @if(session('exito'))
+    <script>
+        Swal.fire({
+            title: "Respuesta",
+            text: "{{ session('exito') }}",
+            icon: "success",
+            confirmButtonText: "OK"
+        });
+    </script>
+@endif
+
+    <div class="card mb-4"> 
+    
         <div class="card-header fs-5 text-center text-primary">
             Registrar Prenda
         </div>

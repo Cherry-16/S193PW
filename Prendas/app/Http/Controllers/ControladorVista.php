@@ -16,8 +16,9 @@ class ControladorVista extends Controller
             'prenda' => 'required|string|max:255',
             'color' => 'required|string|max:50',
             'cantidad' => 'required|integer|min:1',
-            
         ]);
-        return redirect()->route('rutaregistro')->with('success', 'Prenda registrada exitosamente.');
-    }
+    
+        $prenda = $request->input('prenda');
+        return redirect()->route('rutaregistro')->with('exito', "Se guardó: $prenda");
+    }    
 }
