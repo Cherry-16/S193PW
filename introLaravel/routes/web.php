@@ -20,10 +20,9 @@ Route::get('/', function () {
         Route::view('/component', 'componentes')->name('rutaComponent');
 
         // rutas para controlador
-        Route::get('/', [ControladorVistas::class, 'home'])->name('rutaInicio');
-        Route::get('/consulta', [ControladorVistas::class, 'consulta'])->name('rutaClientes'); 
-
-        Route::post('/enviarCliente', [ControladorVistas::class, 'procesarCliente'])->name('rutaEnviar');
+        Route::get('/', [ControladorVistas::class, 'home'])->name('rutaInicio'); 
 
         /* rutas para controlador clienteController */
-        Route::get('/cliente/create', [ClienteController::class, 'create'])->name('rutaForm');
+        Route::get('/cliente/create', [clienteController::class, 'create'])->name('rutaForm');
+        Route::post('/cliente', [clienteController::class, 'store'])->name('rutaEnviar');
+        Route::get('/cliente', [clienteController::class, 'index'])->name('rutaClientes');
