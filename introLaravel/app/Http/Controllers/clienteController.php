@@ -27,7 +27,7 @@ class clienteController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Guardar usuario
      */
     public function store(validadorCliente $request)
     {
@@ -61,18 +61,31 @@ class clienteController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualizar usuario
      */
     public function update(Request $request, string $id)
     {
-        //
+        DB::table('clientes')->where('id', $id)->update([
+            "nombre"=>$request->input('txtnombre'),
+            "apellido"=>$request->input('txtapellido'),
+            "correo"=>$request->input('txtcorreo'),
+            "telefono"=>$request->input('txttelefono'),
+            "updated_at"=>Carbon::now(),
+            ]);
+            $usuario=$request->input('txtnombre');
+            session()->flash('exito','Se actualizo el usuario: '.$usuario);
+            return to_route('rutaClientes');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Eliminar usuario
      */
     public function destroy(string $id)
     {
-        //
+        DB::table('clientes')->delete([
+            "id"=>$id,
+        ]);
+        session()->flash('exito','Se elimino el usuario');
+        return to_route('rutaClientes');
     }
 }

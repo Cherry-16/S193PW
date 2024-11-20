@@ -26,3 +26,5 @@ Route::get('/', function () {
         Route::get('/cliente/create', [clienteController::class, 'create'])->name('rutaForm');
         Route::post('/cliente', [clienteController::class, 'store'])->name('rutaEnviar');
         Route::get('/cliente', [clienteController::class, 'index'])->name('rutaClientes');
+        Route::get('/cliente/{id}', [clienteController::class, 'destroy'])->name('rutaEliminar');
+        Route::get('/cliente/{id}/edit', [clienteController::class, 'edit'])->name('rutaActualizar');
