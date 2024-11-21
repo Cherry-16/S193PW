@@ -55,37 +55,43 @@ class clienteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
+    public function edit($id)
+{
+    $cliente = DB::table('clientes')->find($id);
+    return view('updateClientes', compact('cliente'));
+}
 
-    /**
-     * Actualizar usuario
-     */
-    public function update(Request $request, string $id)
-    {
-        DB::table('clientes')->where('id', $id)->update([
-            "nombre"=>$request->input('txtnombre'),
-            "apellido"=>$request->input('txtapellido'),
-            "correo"=>$request->input('txtcorreo'),
-            "telefono"=>$request->input('txttelefono'),
-            "updated_at"=>Carbon::now(),
-            ]);
-            $usuario=$request->input('txtnombre');
-            session()->flash('exito','Se actualizo el usuario: '.$usuario);
-            return to_route('rutaClientes');
-    }
+public function update(Request $request, $id)
+{
+    $validated = $request->validate([
+        'txtnombre' => 'required|min:4|max:20',
+        'txtapellido' => 'required|min:4|max:20',
+        'txtcorreo' => 'required|email|max:50',
+        'txttelefono' => 'required|numeric|digits:10',
+    ]);
+
+    DB::table('clientes')->where('id', $id)->update([
+        'nombre' => $validated['txtnombre'],
+        'apellido' => $validated['txtapellido'],
+        'correo' => $validated['txtcorreo'],
+        'telefono' => $validated['txttelefono'],
+        'updated_at' => Carbon::now(),
+    ]);
+
+    return redirect()->route('rutaClientes')->with('exito', 'Cliente actualizado correctamente.');
+}
+
+
 
     /**
      * Eliminar usuario
      */
     public function destroy(string $id)
     {
-        DB::table('clientes')->delete([
-            "id"=>$id,
-        ]);
-        session()->flash('exito','Se elimino el usuario');
-        return to_route('rutaClientes');
-    }
+    DB::table('clientes')->where('id', $id)->delete();
+
+    session()->flash('exito', 'Se eliminó el usuario.');
+    return redirect()->route('rutaClientes');
+}
+
 }

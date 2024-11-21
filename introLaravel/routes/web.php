@@ -27,4 +27,9 @@ Route::get('/', function () {
         Route::post('/cliente', [clienteController::class, 'store'])->name('rutaEnviar');
         Route::get('/cliente', [clienteController::class, 'index'])->name('rutaClientes');
         Route::get('/cliente/{id}', [clienteController::class, 'destroy'])->name('rutaEliminar');
-        Route::get('/cliente/{id}/edit', [clienteController::class, 'edit'])->name('rutaActualizar');
+
+        // Mostrar formulario de edición
+        Route::get('/cliente/{id}/edit', [clienteController::class, 'edit'])->name('rutaEditar');
+        // Actualizar cliente
+        Route::put('/cliente/{id}', [clienteController::class, 'update'])->name('rutaActualizar');
+

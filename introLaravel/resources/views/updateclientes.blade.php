@@ -7,21 +7,16 @@
 
 <div class="container mt-5 col-md-6">
   @if(session('exito'))
-    <x-Alert tipo="success">{{ session('exito') }}</x-Alert>
-    @endif
-    @session('exito')
-    <x-Alert tipo="warning">{{ $value }}</x-Alert>
-    @endsession
-
-    @session('exito')
-    {! <script> 
+  <script>
       Swal.fire({
-     title: "Respuesta servidor!",
-    text: "{{ $value }}",
-    icon: "success"});
-    </script> !}
-    @endsession
-
+          title: "¡Actualización Exitosa!",
+          text: "{{ session('exito') }}",
+          icon: "success",
+          confirmButtonText: "Aceptar"
+      });
+  </script>
+  @endif
+  
 <div class="card font-monospace">
 
     <div class="card-header fs-5 text-center text-primary">
@@ -30,8 +25,9 @@
 
     <div class="card-body text-justify ">
 
-      <form action="{{route('rutaActualizar')}}" method="POST">
+      <form action="{{ route('rutaActualizar', $cliente->id) }}" method="POST">
         @csrf
+        @method('PUT')
 
         <div class="mb-3">
           <label for="nombre" class="form-label"> {{__('Nombre:')}}</label>
