@@ -56,13 +56,11 @@ class clienteController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit($id)
-{
+    {
     $cliente = DB::table('clientes')->find($id);
-    return view('updateClientes', compact('cliente'));
-}
+    return view('updateClientes', compact('cliente'));}
 
-public function update(Request $request, $id)
-{
+public function update(Request $request, $id){
     $validated = $request->validate([
         'txtnombre' => 'required|min:4|max:20',
         'txtapellido' => 'required|min:4|max:20',
@@ -77,11 +75,8 @@ public function update(Request $request, $id)
         'telefono' => $validated['txttelefono'],
         'updated_at' => Carbon::now(),
     ]);
-
     return redirect()->route('rutaClientes')->with('exito', 'Cliente actualizado correctamente.');
 }
-
-
 
     /**
      * Eliminar usuario

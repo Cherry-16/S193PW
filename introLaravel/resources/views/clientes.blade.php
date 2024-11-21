@@ -43,7 +43,6 @@ function eliminarCliente(url) {
         cancelButtonText: "Cancelar"
     }).then((result) => {
         if (result.isConfirmed) {
-            // Redirigir al URL de eliminación solo si el usuario confirma
             window.location.href = url;
         }
     });
