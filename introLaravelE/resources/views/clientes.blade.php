@@ -8,7 +8,7 @@
             <div class="card-header fs-5 text-primary">{{$cliente->nombre}}-{{$cliente->apellido}}</div>
             <div class="card-body">
                 <h5 class="fw-bold">{{$cliente->correo}}</h5>
-                <h5 class="fw-medium"{{$cliente->telefono}}></h5>
+                <h5 class="fw-medium">{{$cliente->telefono}}</h5>
                 <p class="card-text fw-lighter"></p>
             </div>
             <div class="card-footer text-muted">
