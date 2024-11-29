@@ -60,15 +60,22 @@ class ClienteController extends Controller
      */
     public function edit(cliente $cliente)
     {
-        //
+        return view('updateCliente', compact('cliente'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, cliente $cliente)
+    public function update(validadorCliente $request, cliente $cliente)
     {
-        //
+        $cliente->nombre = $request->input('txtnombre');
+        $cliente->apellido = $request->input('txtapellido');
+        $cliente->correo = $request->input('txtcorreo');
+        $cliente->telefono = $request->input('txttelefono');
+        $cliente->save();
+        $msj = $request->input('txtnombre');
+        session()->flash('exito','Se actualizó el cliente: '.$msj); 
+        return redirect()->route('cliente.index'); 
     }
 
     /**
@@ -76,6 +83,8 @@ class ClienteController extends Controller
      */
     public function destroy(cliente $cliente)
     {
-        //
+    $cliente->delete();
+    session()->flash('exito', 'El cliente ha sido eliminado correctamente.');
+    return redirect()->route('cliente.index');
     }
 }
